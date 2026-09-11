@@ -98,11 +98,10 @@ annotateAIF <- function(targets,
         if(!exists("MetabolitesPos")) {
             stop("MetabolitesPos not found, please use data(MetabolitesPos)")
         } else libraries <- MetabolitesPos
-        libraries <- MetabolitesPos
     } else if(libs == "MetabolitesNeg") {
         if(!exists("MetabolitesNeg")) {
             stop("MetabolitesNeg not found, please use data(MetabolitesNeg)")
-        } else libraries <- MetabolitesPos
+        } else libraries <- MetabolitesNeg
     } else libraries <- loadLibs(libs)
     
     libfiles <- libraries$libfiles
