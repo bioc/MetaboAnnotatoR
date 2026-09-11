@@ -69,8 +69,13 @@ saveAnnotations <- function(annotations,
     pseudoMSMS <- annotations$pseudoMSMS
 
     # convert polarity label for saveMgf
-    if(polarity == "positive") polarity <- as.integer(1)
-    if(polarity == "negative") polarity <- as.integer(0) 
+    if(is.na(polarity)) {
+    	polarity <- NA
+    } else if(polarity == "positive") {
+    	polarity <- as.integer(1)
+    } else if(polarity == "negative") {
+    	polarity <- as.integer(0)
+    }
 
     # save options
     if(saveOptions){
