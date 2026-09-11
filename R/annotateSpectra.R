@@ -35,7 +35,7 @@
 #' (\code{inSourceSpectra}) and AIF spectrum (\code{AIFspectra}).
 #' @examples
 #' # read the spectra to annotate from an .mgf file
-#' mgfFile <- system.file("extdata", "test.mgf", 
+#' mgfFile <- system.file("extdata", "pseudoMSMS.mgf", 
 #' package="MetaboAnnotatoR")
 #' MSnExpObj <- MSnbase::readMgfData(mgfFile)
 #' # Read the default lipid positive libraries

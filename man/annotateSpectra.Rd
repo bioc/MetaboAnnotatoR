@@ -57,14 +57,14 @@ The spectra are generally acquired in LC-MS or MS imaging experiments.
 }
 \examples{
 # read the spectra to annotate from an .mgf file
-mgfFile <- system.file("extdata", "test.mgf", 
+mgfFile <- system.file("extdata", "pseudoMSMS.mgf", 
 package="MetaboAnnotatoR")
 MSnExpObj <- MSnbase::readMgfData(mgfFile)
 # Read the default lipid positive libraries
 data("LipidPos")
 # Run the annotation procedure
 annotations <- annotateSpectra(MSnExpObj, libs="LipidPos", RTs="none", 
-checkIsotope=TRUE)
+checkIsotope=FALSE)
 }
 \author{
 Goncalo Graca (Imperial College London)
