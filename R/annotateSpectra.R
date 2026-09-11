@@ -42,7 +42,7 @@
 #' data("LipidPos")
 #' # Run the annotation procedure
 #' annotations <- annotateSpectra(MSnExpObj, libs="LipidPos", RTs="none", 
-#' checkIsotope=TRUE)
+#' checkIsotope=FALSE)
 #' @export
 annotateSpectra <- function(MSnExpObj,
                             libs="LipidPos", RTs="none",
@@ -153,18 +153,14 @@ annotateSpectra <- function(MSnExpObj,
                             "pseudoMSMS", "fraction", "score")] <- NA
             rankedSpec <- NULL
 
-            # type of ion isotope
-            rankedResult$isotope <- paste("M+", iso, sep="")
-
-            # pseudoMSMS flag
-            if(is.null(pseudoSpec)) {
-                rankedResult$pseudoMSMS <- "FALSE"
-            } else rankedResult$pseudoMSMS <- "TRUE"
-
         } else {
             output <- rankScore(result, specMatch)
             rankedSpec <- output$rankedSpecMatch
             rankedResult <- output$rankedResult
+            # type of ion isotope
+            rankedResult$isotope <- paste("M+", iso, sep="")
+            # pseudoMSMS flag
+            rankedResult$pseudoMSMS <- "TRUE"
             results$rankedResult[[i]] <- rankedResult
             results$rankedSpectra[[i]] <- rankedSpec
         }
@@ -203,7 +199,7 @@ initializeResultsSpec <- function(targets){
     global <- targets
     global[,c("metabolite", "feature.type", "ion.type", "isotope",
                 "mz.metabolite", "matched.mz", "mz.error",
-                "fraction", "score")] <- NA
+                "pseudoMSMS", "fraction", "score")] <- NA
     # return global results table and results path as list
     results <- list(global=global,
                     Date=Date, 
